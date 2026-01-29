@@ -24,7 +24,7 @@ export const Route = createFileRoute('/_authenticated')({
                 accountNo: storedUser.id.toString(),
                 email: storedUser.email,
                 role: [storedUser.role],
-                exp: Date.now() + 24 * 60 * 60 * 1000, // 24 hours from now
+                exp: Date.now() + 365 * 24 * 60 * 60 * 1000, // 1 year for demo
               })
             }
             setAuthed(true)

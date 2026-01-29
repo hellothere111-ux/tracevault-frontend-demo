@@ -50,7 +50,7 @@ export const Route = createRootRouteWithContext<{
                 accountNo: storedUser.id.toString(),
                 email: storedUser.email,
                 role: [storedUser.role],
-                exp: Date.now() + 24 * 60 * 60 * 1000,
+                exp: Date.now() + 365 * 24 * 60 * 60 * 1000,
               })
             }
           } else {

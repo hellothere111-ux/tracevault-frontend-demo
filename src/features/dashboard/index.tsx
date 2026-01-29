@@ -73,7 +73,7 @@ export function Dashboard() {
             {/* Top Row: Critical Metrics */}
             <div className='grid gap-4 sm:grid-cols-2 lg:grid-cols-5'>
               {/* Open Vulnerabilities - Red/Critical */}
-              <Card className='border-l-4 border-l-red-600'>
+              <Card className=''>
                 <CardHeader className='flex flex-row items-center justify-between space-y-0 pb-2'>
                   <CardTitle className='text-sm font-medium'>
                     Open Vulnerabilities
@@ -90,7 +90,7 @@ export function Dashboard() {
               </Card>
 
               {/* SLAs Approaching - Yellow/Warning */}
-              <Card className='border-l-4 border-l-yellow-600'>
+              <Card className=''>
                 <CardHeader className='flex flex-row items-center justify-between space-y-0 pb-2'>
                   <CardTitle className='text-sm font-medium'>
                     SLAs Approaching
@@ -106,7 +106,7 @@ export function Dashboard() {
               </Card>
 
               {/* SLAs Breached - Red/Critical */}
-              <Card className='border-l-4 border-l-red-700'>
+              <Card className=''>
                 <CardHeader className='flex flex-row items-center justify-between space-y-0 pb-2'>
                   <CardTitle className='text-sm font-medium'>
                     SLAs Breached
@@ -122,7 +122,7 @@ export function Dashboard() {
               </Card>
 
               {/* Remediated Vulns - Green/Success */}
-              <Card className='border-l-4 border-l-green-600'>
+              <Card className=''>
                 <CardHeader className='flex flex-row items-center justify-between space-y-0 pb-2'>
                   <CardTitle className='text-sm font-medium'>
                     Remediated Vulns
@@ -138,7 +138,7 @@ export function Dashboard() {
               </Card>
 
               {/* Avg MTTR - Purple/Info */}
-              <Card className='border-l-4 border-l-purple-600'>
+              <Card className=''>
                 <CardHeader className='flex flex-row items-center justify-between space-y-0 pb-2'>
                   <CardTitle className='text-sm font-medium'>
                     Avg MTTR
@@ -158,7 +158,7 @@ export function Dashboard() {
             {/* Second Row: Additional Metrics */}
             <div className='grid gap-4 sm:grid-cols-2 lg:grid-cols-5'>
               {/* Critical Vulnerabilities */}
-              <Card className='border-l-4 border-l-red-700'>
+              <Card className=''>
                 <CardHeader className='flex flex-row items-center justify-between space-y-0 pb-2'>
                   <CardTitle className='text-sm font-medium'>
                     Critical Count
@@ -174,7 +174,7 @@ export function Dashboard() {
               </Card>
 
               {/* High Vulnerabilities */}
-              <Card className='border-l-4 border-l-orange-600'>
+              <Card className=''>
                 <CardHeader className='flex flex-row items-center justify-between space-y-0 pb-2'>
                   <CardTitle className='text-sm font-medium'>
                     High Severity
@@ -190,7 +190,7 @@ export function Dashboard() {
               </Card>
 
               {/* Risk Score */}
-              <Card className='border-l-4 border-l-amber-600'>
+              <Card className=''>
                 <CardHeader className='flex flex-row items-center justify-between space-y-0 pb-2'>
                   <CardTitle className='text-sm font-medium'>
                     Risk Score
@@ -206,7 +206,7 @@ export function Dashboard() {
               </Card>
 
               {/* Remediation Rate */}
-              <Card className='border-l-4 border-l-blue-600'>
+              <Card className=''>
                 <CardHeader className='flex flex-row items-center justify-between space-y-0 pb-2'>
                   <CardTitle className='text-sm font-medium'>
                     Remediation Rate
@@ -222,7 +222,7 @@ export function Dashboard() {
               </Card>
 
               {/* Assets at Risk */}
-              <Card className='border-l-4 border-l-pink-600'>
+              <Card className=''>
                 <CardHeader className='flex flex-row items-center justify-between space-y-0 pb-2'>
                   <CardTitle className='text-sm font-medium'>
                     Assets at Risk
