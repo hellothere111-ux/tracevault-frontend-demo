@@ -118,7 +118,7 @@ export function AnalyticsTab({ node }: AnalyticsTabProps) {
         <CardContent>
           <div className="space-y-4">
             {/* Line Graph */}
-            <div className="h-48 bg-gray-50 dark:bg-gray-800 rounded-lg p-4 relative">
+            <div className="h-48 bg-gray-50 dark:bg-card rounded-lg p-4 relative">
               {/* Grid Lines */}
               <div className="absolute inset-4 flex flex-col justify-between">
                 <div className="border-b border-gray-200 dark:border-gray-600"></div>
@@ -182,7 +182,7 @@ export function AnalyticsTab({ node }: AnalyticsTabProps) {
             </div>
             
             {/* Score Values */}
-            <div className="flex justify-between px-4 text-xs font-medium text-gray-900 dark:text-gray-100">
+            <div className="flex justify-between px-4 text-xs font-medium text-gray-900 dark:text-foreground">
               {riskTrend.map((item, index) => (
                 <div key={index} className="flex-1 text-center">
                   {item.score}
@@ -248,7 +248,7 @@ export function AnalyticsTab({ node }: AnalyticsTabProps) {
                   <div className={`w-4 h-4 rounded ${item.color}`}></div>
                   <span className="text-sm font-medium w-20">{item.severity}</span>
                   <div className="flex-1">
-                    <div className="bg-gray-200 dark:bg-gray-700 rounded-full h-4">
+                    <div className="bg-gray-200 dark:bg-muted rounded-full h-4">
                       <div 
                         className={`h-4 rounded-full ${item.color}`}
                         style={{ width: `${(item.count / 12) * 100}%` }}

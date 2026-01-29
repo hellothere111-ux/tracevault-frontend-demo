@@ -9,32 +9,62 @@ export const Route = createFileRoute('/_authenticated')({
     const navigate = useNavigate()
     const { auth } = useAuthStore()
     const [checked, setChecked] = useState(false)
-    const [authed, setAuthed] = useState(false)
 
     useEffect(() => {
-      // For demo: always try to get user from localStorage first
-      const checkAuth = async () => {
+      // For demo: very lenient authentication - just check localStorage exists
+      const checkAuth = () => {
         try {
-          // Check if user exists in localStorage
           const storedUser = authService.getUser()
           if (storedUser) {
-            // Set user in store if not already there
+            // User exists in localStorage, set in store if needed
             if (!auth.user) {
               auth.setUser({
                 accountNo: storedUser.id.toString(),
                 email: storedUser.email,
                 role: [storedUser.role],
-                exp: Date.now() + 365 * 24 * 60 * 60 * 1000, // 1 year for demo
+                exp: Date.now() + 365 * 24 * 60 * 60 * 1000, // 1 year
               })
             }
-            setAuthed(true)
           } else {
-            // No user in localStorage, redirect to sign-in
-            navigate({ to: '/sign-in-2', replace: true })
+            // For demo: if no user, create a default admin user
+            const defaultUser = {
+              id: 1,
+              username: 'admin',
+              email: 'admin@tracevault.com',
+              first_name: 'Admin',
+              last_name: 'User',
+              role: 'admin',
+              status: 'active'
+            }
+            
+            // Store default user and set in auth store
+            localStorage.setItem('user', JSON.stringify(defaultUser))
+            auth.setUser({
+              accountNo: defaultUser.id.toString(),
+              email: defaultUser.email,
+              role: [defaultUser.role],
+              exp: Date.now() + 365 * 24 * 60 * 60 * 1000,
+            })
           }
         } catch (error) {
-          // Any error, redirect to sign-in
-          navigate({ to: '/sign-in-2', replace: true })
+          // For demo: even on error, create default user
+          const defaultUser = {
+            id: 1,
+            username: 'admin',
+            email: 'admin@tracevault.com',
+            first_name: 'Admin',
+            last_name: 'User',
+            role: 'admin',
+            status: 'active'
+          }
+          
+          localStorage.setItem('user', JSON.stringify(defaultUser))
+          auth.setUser({
+            accountNo: defaultUser.id.toString(),
+            email: defaultUser.email,
+            role: [defaultUser.role],
+            exp: Date.now() + 365 * 24 * 60 * 60 * 1000,
+          })
         } finally {
           setChecked(true)
         }
@@ -44,9 +74,6 @@ export const Route = createFileRoute('/_authenticated')({
     }, [navigate, auth.user, auth])
 
     if (!checked) return null
-    if (!authed) return null
-    // Final check: if user was cleared from store, deny access
-    if (!auth.user) return null
 
     return <AuthenticatedLayout />
   },

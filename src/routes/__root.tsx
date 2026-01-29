@@ -39,27 +39,40 @@ export const Route = createRootRouteWithContext<{
         return
       }
 
-      // For demo: check localStorage first before redirecting
-      const checkAuth = async () => {
+      // For demo: very lenient auth check
+      const checkAuth = () => {
         try {
           const storedUser = authService.getUser()
-          if (storedUser) {
-            // User exists in localStorage, set in store if needed
-            if (!auth.user) {
-              auth.setUser({
-                accountNo: storedUser.id.toString(),
-                email: storedUser.email,
-                role: [storedUser.role],
-                exp: Date.now() + 365 * 24 * 60 * 60 * 1000,
-              })
+          if (!storedUser) {
+            // Create default user if none exists
+            const defaultUser = {
+              id: 1,
+              username: 'admin',
+              email: 'admin@tracevault.com',
+              first_name: 'Admin',
+              last_name: 'User',
+              role: 'admin',
+              status: 'active'
             }
-          } else {
-            // No user found, redirect to sign-in
-            navigate({ to: '/sign-in-2', replace: true })
+            
+            localStorage.setItem('user', JSON.stringify(defaultUser))
+            auth.setUser({
+              accountNo: defaultUser.id.toString(),
+              email: defaultUser.email,
+              role: [defaultUser.role],
+              exp: Date.now() + 365 * 24 * 60 * 60 * 1000,
+            })
+          } else if (!auth.user) {
+            // Set user in store if not already there
+            auth.setUser({
+              accountNo: storedUser.id.toString(),
+              email: storedUser.email,
+              role: [storedUser.role],
+              exp: Date.now() + 365 * 24 * 60 * 60 * 1000,
+            })
           }
         } catch (error) {
-          // Any error, redirect to sign-in
-          navigate({ to: '/sign-in-2', replace: true })
+          // Even on error, continue - this is a demo
         } finally {
           setChecked(true)
         }

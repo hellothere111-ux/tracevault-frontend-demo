@@ -27,7 +27,7 @@ export function DetailsTab({ node }: DetailsTabProps) {
                 <Calendar className="h-4 w-4" />
                 Created Date
               </p>
-              <p className="font-medium dark:text-gray-100">
+              <p className="font-medium dark:text-foreground">
                 {new Date(data?.created_at || '').toLocaleDateString()}
               </p>
             </div>
@@ -36,13 +36,13 @@ export function DetailsTab({ node }: DetailsTabProps) {
                 <Calendar className="h-4 w-4" />
                 Last Updated
               </p>
-              <p className="font-medium dark:text-gray-100">
+              <p className="font-medium dark:text-foreground">
                 {new Date(data?.updated_at || '').toLocaleDateString()}
               </p>
             </div>
             <div>
               <p className="text-sm text-muted-foreground dark:text-gray-400">Status</p>
-              <Badge className={data?.status === 'active' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' : 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200'}>
+              <Badge className={data?.status === 'active' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' : 'bg-gray-100 text-gray-800 dark:bg-muted dark:text-gray-200'}>
                 {data?.status === 'active' ? 'Active' : 'Inactive'}
               </Badge>
             </div>
@@ -57,7 +57,7 @@ export function DetailsTab({ node }: DetailsTabProps) {
           {data?.description && (
             <div>
               <p className="text-sm text-muted-foreground dark:text-gray-400">Description</p>
-              <p className="mt-1 dark:text-gray-100">{data.description}</p>
+              <p className="mt-1 dark:text-foreground">{data.description}</p>
             </div>
           )}
         </CardContent>
@@ -128,11 +128,11 @@ export function DetailsTab({ node }: DetailsTabProps) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <p className="text-sm text-muted-foreground dark:text-gray-400">Owner</p>
-              <p className="font-medium dark:text-gray-100">John Doe</p>
+              <p className="font-medium dark:text-foreground">John Doe</p>
             </div>
             <div>
               <p className="text-sm text-muted-foreground dark:text-gray-400">Team</p>
-              <p className="font-medium dark:text-gray-100">Engineering Team</p>
+              <p className="font-medium dark:text-foreground">Engineering Team</p>
             </div>
           </div>
         </CardContent>
