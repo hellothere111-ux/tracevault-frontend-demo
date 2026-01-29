@@ -117,7 +117,7 @@ export function Apps() {
           <h2 className='mb-4 text-lg font-semibold'>Security & Project Management</h2>
           <div className='grid gap-4 md:grid-cols-2 lg:grid-cols-3'>
             {/* Snyk Integration Card */}
-            <Card className='border-blue-200 dark:border-blue-800'>
+            <Card className='border-gray-200 dark:border-border'>
               <CardHeader>
                 <div className='flex items-start justify-between'>
                   <div>
@@ -153,7 +153,7 @@ export function Apps() {
             </Card>
 
             {/* Jira Integration Card */}
-            <Card className='border-purple-200 dark:border-purple-800'>
+            <Card className='border-gray-200 dark:border-border'>
               <CardHeader>
                 <div className='flex items-start justify-between'>
                   <div>
@@ -189,7 +189,7 @@ export function Apps() {
             </Card>
 
             {/* Adaptive Security Integration Card */}
-            <Card className='border-purple-200 dark:border-purple-800'>
+            <Card className='border-gray-200 dark:border-border'>
               <CardHeader>
                 <div className='flex items-start justify-between'>
                   <div>
