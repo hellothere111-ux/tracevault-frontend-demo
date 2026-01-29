@@ -12,38 +12,40 @@ export const Route = createFileRoute('/_authenticated')({
     const [authed, setAuthed] = useState(false)
 
     useEffect(() => {
-      // If user is not in store, deny access immediately
-      if (!auth.user) {
-        navigate({ to: '/sign-in-2', replace: true })
-        setChecked(true)
-        return
-      }
-
-      let mounted = true
-
-      const verify = async () => {
+      // For demo: always try to get user from localStorage first
+      const checkAuth = async () => {
         try {
-          await authService.getCurrentUser()
-          if (!mounted) return
-          setAuthed(true)
-        } catch (e) {
-          if (!mounted) return
+          // Check if user exists in localStorage
+          const storedUser = authService.getUser()
+          if (storedUser) {
+            // Set user in store if not already there
+            if (!auth.user) {
+              auth.setUser({
+                accountNo: storedUser.id.toString(),
+                email: storedUser.email,
+                role: [storedUser.role],
+                exp: Date.now() + 24 * 60 * 60 * 1000, // 24 hours from now
+              })
+            }
+            setAuthed(true)
+          } else {
+            // No user in localStorage, redirect to sign-in
+            navigate({ to: '/sign-in-2', replace: true })
+          }
+        } catch (error) {
+          // Any error, redirect to sign-in
           navigate({ to: '/sign-in-2', replace: true })
         } finally {
-          if (mounted) setChecked(true)
+          setChecked(true)
         }
       }
 
-      verify()
-
-      return () => {
-        mounted = false
-      }
-    }, [navigate, auth.user])
+      checkAuth()
+    }, [navigate, auth.user, auth])
 
     if (!checked) return null
     if (!authed) return null
-    // Extra check: if user was cleared from store (logout), deny access
+    // Final check: if user was cleared from store, deny access
     if (!auth.user) return null
 
     return <AuthenticatedLayout />

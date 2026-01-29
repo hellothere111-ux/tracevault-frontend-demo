@@ -39,34 +39,33 @@ export const Route = createRootRouteWithContext<{
         return
       }
 
-      // For demo: check localStorage first before redirecting
-      const checkAuth = async () => {
+      // Quick check: if user is not in store, redirect immediately
+      if (!auth.user) {
+        navigate({ to: '/sign-in-2', replace: true })
+        setChecked(true)
+        return
+      }
+
+      let mounted = true
+      const verify = async () => {
         try {
-          const storedUser = authService.getUser()
-          if (storedUser) {
-            // User exists in localStorage, set in store if needed
-            if (!auth.user) {
-              auth.setUser({
-                accountNo: storedUser.id.toString(),
-                email: storedUser.email,
-                role: [storedUser.role],
-                exp: Date.now() + 24 * 60 * 60 * 1000,
-              })
-            }
-          } else {
-            // No user found, redirect to sign-in
-            navigate({ to: '/sign-in-2', replace: true })
-          }
-        } catch (error) {
-          // Any error, redirect to sign-in
-          navigate({ to: '/sign-in-2', replace: true })
+          await authService.getCurrentUser()
+          if (!mounted) return
+        } catch (e) {
+          if (!mounted) return
+          const redirect = window.location.pathname + window.location.search
+          navigate({ to: '/sign-in-2', search: { redirect }, replace: true })
         } finally {
-          setChecked(true)
+          if (mounted) setChecked(true)
         }
       }
 
-      checkAuth()
-    }, [auth.user, navigate, auth])
+      verify()
+
+      return () => {
+        mounted = false
+      }
+    }, [auth.user, navigate])
 
     if (!checked) return null
 
