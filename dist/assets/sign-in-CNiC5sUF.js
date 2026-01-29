@@ -1,0 +1,1 @@
+import{j as a,d as n}from"./index-0PI-q4VW.js";import{a as m}from"./index-BiFoEPvf.js";function o({className:s,...e}){return a.jsx("div",{"data-slot":"skeleton",className:n("animate-pulse rounded-md bg-accent",s),...e})}const l=()=>a.jsx(m,{initialValues:{emailAddress:"your_mail+shadcn_admin@gmail.com"},fallback:a.jsx(o,{className:"h-[30rem] w-[25rem]"})});export{l as component};

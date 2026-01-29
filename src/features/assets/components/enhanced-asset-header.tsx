@@ -23,19 +23,19 @@ export function EnhancedAssetHeader({ node }: EnhancedAssetHeaderProps) {
   }
 
   const data = node.data
-  const statusColor = data?.status === 'active' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'
+  const statusColor = data?.status === 'active' ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400' : 'bg-gray-100 text-gray-800 dark:bg-gray-900/30 dark:text-gray-400'
   const typeColor = {
-    [AssetType.TENANT]: 'bg-purple-100 text-purple-800',
-    [AssetType.PROJECT]: 'bg-blue-100 text-blue-800',
-    [AssetType.SUB_PROJECT]: 'bg-indigo-100 text-indigo-800',
-    [AssetType.ENVIRONMENT]: 'bg-green-100 text-green-800'
-  }[node.type] || 'bg-gray-100 text-gray-800'
+    [AssetType.TENANT]: 'bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-400',
+    [AssetType.PROJECT]: 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400',
+    [AssetType.SUB_PROJECT]: 'bg-indigo-100 text-indigo-800 dark:bg-indigo-900/30 dark:text-indigo-400',
+    [AssetType.ENVIRONMENT]: 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400'
+  }[node.type] || 'bg-gray-100 text-gray-800 dark:bg-gray-900/30 dark:text-gray-400'
 
   const getRiskLevelColor = (riskScore: number) => {
-    if (riskScore >= 8) return 'text-red-600 bg-red-50'
-    if (riskScore >= 6) return 'text-orange-600 bg-orange-50'
-    if (riskScore >= 4) return 'text-yellow-600 bg-yellow-50'
-    return 'text-green-600 bg-green-50'
+    if (riskScore >= 8) return 'text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-950/30'
+    if (riskScore >= 6) return 'text-orange-600 dark:text-orange-400 bg-orange-50 dark:bg-orange-950/30'
+    if (riskScore >= 4) return 'text-yellow-600 dark:text-yellow-400 bg-yellow-50 dark:bg-yellow-950/30'
+    return 'text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-950/30'
   }
 
   const riskLevelColor = getRiskLevelColor(data?.risk_score || 0)

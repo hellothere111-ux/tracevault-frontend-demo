@@ -53,12 +53,12 @@ export function AnalyticsTab({ node }: AnalyticsTabProps) {
               </div>
               <div className="flex items-center gap-1">
                 {riskImprovement > 0 ? (
-                  <TrendingDown className="h-4 w-4 text-green-500" />
+                  <TrendingDown className="h-4 w-4 text-green-600 dark:text-green-400 dark:text-green-400" />
                 ) : (
-                  <TrendingUp className="h-4 w-4 text-red-500" />
+                  <TrendingUp className="h-4 w-4 text-red-600 dark:text-red-400 dark:text-red-400" />
                 )}
                 <span className={`text-sm font-medium ${
-                  riskImprovement > 0 ? 'text-green-600' : 'text-red-600'
+                  riskImprovement > 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'
                 }`}>
                   {Math.abs(riskImprovement).toFixed(1)}
                 </span>
@@ -74,7 +74,7 @@ export function AnalyticsTab({ node }: AnalyticsTabProps) {
                 <p className="text-sm font-medium text-muted-foreground">MTTR</p>
                 <p className="text-2xl font-bold">4.2d</p>
               </div>
-              <TrendingDown className="h-4 w-4 text-green-500" />
+              <TrendingDown className="h-4 w-4 text-green-600 dark:text-green-400 dark:text-green-400" />
             </div>
             <p className="text-xs text-muted-foreground">Days to resolve</p>
           </CardContent>
@@ -87,7 +87,7 @@ export function AnalyticsTab({ node }: AnalyticsTabProps) {
                 <p className="text-sm font-medium text-muted-foreground">Scan Coverage</p>
                 <p className="text-2xl font-bold">87%</p>
               </div>
-              <Target className="h-4 w-4 text-blue-500" />
+              <Target className="h-4 w-4 text-blue-600 dark:text-blue-400" />
             </div>
             <p className="text-xs text-muted-foreground">Assets scanned</p>
           </CardContent>
@@ -100,7 +100,7 @@ export function AnalyticsTab({ node }: AnalyticsTabProps) {
                 <p className="text-sm font-medium text-muted-foreground">Compliance</p>
                 <p className="text-2xl font-bold">92%</p>
               </div>
-              <BarChart3 className="h-4 w-4 text-purple-500" />
+              <BarChart3 className="h-4 w-4 text-purple-600 dark:text-purple-400" />
             </div>
             <p className="text-xs text-muted-foreground">Score</p>
           </CardContent>
@@ -141,19 +141,19 @@ export function AnalyticsTab({ node }: AnalyticsTabProps) {
                 {/* Line Path */}
                 <polyline
                   fill="none"
-                  stroke="#3B82F6"
+                  stroke="#3B82F6" class="dark:stroke-blue-400"
                   strokeWidth="2"
                   points="0,28 20,32 40,35 60,33 80,35 100,39"
                   className="drop-shadow-sm"
                 />
                 
                 {/* Data Points */}
-                <circle cx="0" cy="28" r="3" fill="#3B82F6" className="hover:r-4 transition-all cursor-pointer" />
-                <circle cx="20" cy="32" r="3" fill="#3B82F6" className="hover:r-4 transition-all cursor-pointer" />
-                <circle cx="40" cy="35" r="3" fill="#3B82F6" className="hover:r-4 transition-all cursor-pointer" />
-                <circle cx="60" cy="33" r="3" fill="#3B82F6" className="hover:r-4 transition-all cursor-pointer" />
-                <circle cx="80" cy="35" r="3" fill="#3B82F6" className="hover:r-4 transition-all cursor-pointer" />
-                <circle cx="100" cy="39" r="3" fill="#3B82F6" className="hover:r-4 transition-all cursor-pointer" />
+                <circle cx="0" cy="28" r="3" fill="#3B82F6" class="dark:fill-blue-400" className="hover:r-4 transition-all cursor-pointer" />
+                <circle cx="20" cy="32" r="3" fill="#3B82F6" class="dark:fill-blue-400" className="hover:r-4 transition-all cursor-pointer" />
+                <circle cx="40" cy="35" r="3" fill="#3B82F6" class="dark:fill-blue-400" className="hover:r-4 transition-all cursor-pointer" />
+                <circle cx="60" cy="33" r="3" fill="#3B82F6" class="dark:fill-blue-400" className="hover:r-4 transition-all cursor-pointer" />
+                <circle cx="80" cy="35" r="3" fill="#3B82F6" class="dark:fill-blue-400" className="hover:r-4 transition-all cursor-pointer" />
+                <circle cx="100" cy="39" r="3" fill="#3B82F6" class="dark:fill-blue-400" className="hover:r-4 transition-all cursor-pointer" />
                 
                 {/* Area under the line */}
                 <polygon
@@ -165,8 +165,8 @@ export function AnalyticsTab({ node }: AnalyticsTabProps) {
                 {/* Gradient Definition */}
                 <defs>
                   <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stopColor="#3B82F6" />
-                    <stop offset="100%" stopColor="#3B82F6" stopOpacity="0" />
+                    <stop offset="0%" stopColor="#3B82F6" class="dark:stop-color-blue-400" />
+                    <stop offset="100%" stopColor="#3B82F6" class="dark:stop-color-blue-400" stopOpacity="0" />
                   </linearGradient>
                 </defs>
               </svg>
@@ -220,10 +220,10 @@ export function AnalyticsTab({ node }: AnalyticsTabProps) {
                     ></div>
                   </div>
                   <div className="flex gap-2 text-xs">
-                    <Badge variant="outline" className="text-red-600 border-red-200">
+                    <Badge variant="outline" className="text-red-600 dark:text-red-400 border-red-200">
                       +{item.discovered}
                     </Badge>
-                    <Badge variant="outline" className="text-green-600 border-green-200">
+                    <Badge variant="outline" className="text-green-600 dark:text-green-400 border-green-200">
                       -{item.resolved}
                     </Badge>
                   </div>
@@ -275,7 +275,7 @@ export function AnalyticsTab({ node }: AnalyticsTabProps) {
               <div className="text-sm text-blue-700 dark:text-blue-300">Average Scan Time</div>
             </div>
             <div className="text-center p-4 rounded-lg bg-green-50 dark:bg-green-950 border border-green-200 dark:border-green-800">
-              <div className="text-2xl font-bold text-green-600 dark:text-green-400">98.5%</div>
+              <div className="text-2xl font-bold text-green-600 dark:text-green-400 dark:text-green-400">98.5%</div>
               <div className="text-sm text-green-700 dark:text-green-300">Uptime</div>
             </div>
             <div className="text-center p-4 rounded-lg bg-purple-50 dark:bg-purple-950 border border-purple-200 dark:border-purple-800">
