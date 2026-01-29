@@ -284,7 +284,7 @@ export function OmniFlowCanvas({
           background-size: 20px 20px;
         }
         .canvas-dots-dark {
-          background-image: radial-gradient(circle, rgba(255, 255, 255, 0.2) 1px, transparent 1px);
+          background-image: radial-gradient(circle, #6b7280 1px, transparent 1px);
           background-size: 20px 20px;
         }
       `}</style>
