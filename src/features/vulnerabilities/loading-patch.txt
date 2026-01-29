@@ -1,0 +1,71 @@
+# Instructions to complete skeleton loading implementation
+
+## OffSec Tab - Table Section
+Replace the vulnerability table section in OffSec tab with:
+
+```tsx
+{/* Vulnerabilities Table */}
+{loading ? (
+  <VulnerabilityTableSkeleton />
+) : (
+  <Card className='flex-1 flex flex-col overflow-hidden'>
+    // ... existing table content
+  </Card>
+)}
+```
+
+## AppSec Tab - Complete Implementation
+Replace the entire AppSec tab content with skeleton loading:
+
+```tsx
+{/* AppSec Tab */}
+<TabsContent value='appsec' className='space-y-4'>
+  {/* Source Tabs - Only Snyk sources */}
+  {loading ? (
+    <SourceTabsSkeleton />
+  ) : (
+    <Card>
+      <CardContent className='pt-6'>
+        <AppSecSourceTabs
+          activeTab={activeTab}
+          onTabChange={setActiveTab}
+          counts={vulnCounts}
+        />
+      </CardContent>
+    </Card>
+  )}
+
+  {/* Main Content Layout */}
+  <div className='grid grid-cols-1 lg:grid-cols-4 gap-4'>
+    {/* Filters Sidebar */}
+    <div className='lg:col-span-1'>
+      {loading ? (
+        <VulnerabilityFiltersSkeleton />
+      ) : (
+        <Card>
+          // ... existing filters content
+        </Card>
+      )}
+    </div>
+
+    {/* Main Content Area */}
+    <div className='lg:col-span-3 flex flex-col gap-4'>
+      {/* Vulnerabilities Table */}
+      {loading ? (
+        <VulnerabilityTableSkeleton />
+      ) : (
+        <Card className='flex-1 flex flex-col overflow-hidden'>
+          // ... existing table content
+        </Card>
+      )}
+    </div>
+  </div>
+</TabsContent>
+```
+
+## Result
+This will provide smooth skeleton animations throughout the vulnerabilities page:
+- Pulse animations on all loading elements
+- Consistent visual structure during loading
+- Smooth transitions from loading to loaded state
+- Professional user experience
