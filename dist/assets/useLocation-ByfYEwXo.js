@@ -1,1 +1,0 @@
-import{i as t}from"./index-BOUAmJo2.js";function i(e){return t({select:o=>e?.select?e.select(o.location):o.location})}export{i as u};
