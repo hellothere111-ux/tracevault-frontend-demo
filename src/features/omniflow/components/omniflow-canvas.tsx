@@ -280,11 +280,11 @@ export function OmniFlowCanvas({
     <TooltipProvider>
       <style>{`
         .canvas-dots-light {
-          background-image: radial-gradient(circle, #d1d5db 0.5px, transparent 0.5px);
+          background-image: radial-gradient(circle, #d1d5db 1px, transparent 1px);
           background-size: 20px 20px;
         }
         .canvas-dots-dark {
-          background-image: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0.5px, transparent 0.5px);
+          background-image: radial-gradient(circle, rgba(255, 255, 255, 0.2) 1px, transparent 1px);
           background-size: 20px 20px;
         }
       `}</style>
@@ -555,10 +555,10 @@ export function OmniFlowCanvas({
               {flowBoxes.map(box => (
                 <div
                   key={box.id}
-                  className={`flow-box absolute dark:bg-card dark:bg-card rounded-lg shadow-lg border-2 transition-all duration-300 select-none ${
+                  className={`flow-box absolute bg-white dark:bg-card rounded-lg shadow-lg border-2 transition-all duration-300 select-none ${
                     selectedFlow === box.id
                       ? 'border-blue-500 shadow-xl'
-                      : 'dark:border-border dark:border-border hover:border-gray-300 dark:hover:border-gray-600'
+                      : 'border-gray-200 dark:border-border hover:border-gray-300 dark:hover:border-gray-600'
                   } ${draggedBox === box.id ? 'cursor-grabbing z-50' : 'cursor-grab'}`}
                   style={{
                     left: `${box.position.x}px`,
@@ -571,7 +571,7 @@ export function OmniFlowCanvas({
                 >
                   <div className="p-3">
                     <div className="flex items-center gap-2 mb-2">
-                      <div className={`p-1 rounded ${getStatusColor(box.status)} bg-opacity-20 text-white`}>
+                      <div className={`p-1 rounded ${getStatusColor(box.status)}  text-white`}>
                         {getTypeIcon(box.type)}
                       </div>
                       <div className="flex-1 min-w-0">
@@ -582,7 +582,7 @@ export function OmniFlowCanvas({
                     </div>
                     
                     <div className="flex items-center gap-2 mb-2">
-                      <div className={`flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(box.status)} bg-opacity-20 text-white`}>
+                      <div className={`flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(box.status)}  text-white`}>
                         {getStatusIcon(box.status)}
                         <span className="capitalize">{box.status.replace('-', ' ')}</span>
                       </div>
