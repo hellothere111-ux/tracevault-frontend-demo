@@ -174,7 +174,7 @@ export function OverviewTab({ node }: OverviewTabProps) {
                   <div className={`w-4 h-4 rounded ${item.color}`}></div>
                   <span className="text-sm font-medium w-20">{item.severity}</span>
                   <div className="flex-1">
-                    <div className="bg-gray-200 dark:bg-muted rounded-full h-4">
+                    <div className="bg-gray-200 dark:bg-gray-700 rounded-full h-4">
                       <div 
                         className={`h-4 rounded-full ${item.color}`}
                         style={{ width: `${(item.count / 12) * 100}%` }}
