@@ -283,8 +283,8 @@ export function OmniFlowCanvas({
           background-image: radial-gradient(circle, #d1d5db 1px, transparent 1px);
           background-size: 20px 20px;
         }
-        .canvas-dots-dark {
-          background-image: radial-gradient(circle, #6b7280 1px, transparent 1px);
+        .dark .canvas-dots-light {
+          background-image: radial-gradient(circle, #374151 1px, transparent 1px);
           background-size: 20px 20px;
         }
       `}</style>
@@ -419,7 +419,7 @@ export function OmniFlowCanvas({
           {/* Canvas */}
           <div
             ref={containerRef}
-            className="flex-1 relative overflow-hidden dark:bg-background dark:bg-background canvas-container canvas-dots-light dark:canvas-dots-dark select-none"
+            className="flex-1 relative overflow-hidden dark:bg-background dark:bg-background canvas-container canvas-dots-light select-none"
             onMouseDown={handleMouseDown}
             onMouseMove={handleMouseMove}
             onMouseUp={handleMouseUp}
