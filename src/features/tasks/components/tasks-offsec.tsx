@@ -3,6 +3,7 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Progress } from '@/components/ui/progress'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Shield, Zap, Server, Database, Globe, Monitor, Sword, AlertCircle, PieChart, Target, AlertTriangle, TrendingUp, Filter, MoreHorizontal, Eye, ChevronLeft, ChevronRight, Check, Play, Clock, ChevronUp, CheckCircle2, Calendar, Activity, X } from 'lucide-react'
 import { OrganizationalTask } from '../data/organizational-tasks'
 import { useState } from 'react'
@@ -244,49 +245,52 @@ export function OffSecTab({ tasks }: OffSecTabProps) {
           <div className="flex items-center gap-4 pt-4">
             <div className="flex items-center gap-2">
               <Filter className="h-4 w-4 text-muted-foreground" />
-              <select
-                value={selectedStatus}
-                onChange={(e) => handleFilterChange('status', e.target.value)}
-                className="px-3 py-1 border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-              >
-                <option value="all">All Status</option>
-                <option value="To Do">To Do</option>
-                <option value="In Progress">In Progress</option>
-                <option value="In Review">In Review</option>
-                <option value="Done">Done</option>
-                <option value="Blocked">Blocked</option>
-              </select>
+              <Select value={selectedStatus} onValueChange={(value) => handleFilterChange('status', value)}>
+                <SelectTrigger className="w-32">
+                  <SelectValue placeholder="All Status" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">All Status</SelectItem>
+                  <SelectItem value="To Do">To Do</SelectItem>
+                  <SelectItem value="In Progress">In Progress</SelectItem>
+                  <SelectItem value="In Review">In Review</SelectItem>
+                  <SelectItem value="Done">Done</SelectItem>
+                  <SelectItem value="Blocked">Blocked</SelectItem>
+                </SelectContent>
+              </Select>
               
-              <select
-                value={selectedPriority}
-                onChange={(e) => handleFilterChange('priority', e.target.value)}
-                className="px-3 py-1 border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-              >
-                <option value="all">All Priority</option>
-                <option value="Critical">Critical</option>
-                <option value="High">High</option>
-                <option value="Medium">Medium</option>
-                <option value="Low">Low</option>
-              </select>
+              <Select value={selectedPriority} onValueChange={(value) => handleFilterChange('priority', value)}>
+                <SelectTrigger className="w-32">
+                  <SelectValue placeholder="All Priority" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">All Priority</SelectItem>
+                  <SelectItem value="Critical">Critical</SelectItem>
+                  <SelectItem value="High">High</SelectItem>
+                  <SelectItem value="Medium">Medium</SelectItem>
+                  <SelectItem value="Low">Low</SelectItem>
+                </SelectContent>
+              </Select>
               
-              <select
-                value={`${sortField}-${sortOrder}`}
-                onChange={(e) => {
-                  const [field, order] = e.target.value.split('-')
-                  setSortField(field as SortField)
-                  setSortOrder(order as SortOrder)
-                }}
-                className="px-3 py-1 border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-              >
-                <option value="priority-desc">Priority (High to Low)</option>
-                <option value="priority-asc">Priority (Low to High)</option>
-                <option value="status-asc">Status (A to Z)</option>
-                <option value="status-desc">Status (Z to A)</option>
-                <option value="updated-desc">Recently Updated</option>
-                <option value="updated-asc">Least Recently Updated</option>
-                <option value="created-desc">Newest First</option>
-                <option value="created-asc">Oldest First</option>
-              </select>
+              <Select value={`${sortField}-${sortOrder}`} onValueChange={(value) => {
+                const [field, order] = value.split('-')
+                setSortField(field as SortField)
+                setSortOrder(order as SortOrder)
+              }}>
+                <SelectTrigger className="w-48">
+                  <SelectValue placeholder="Sort by" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="priority-desc">Priority (High to Low)</SelectItem>
+                  <SelectItem value="priority-asc">Priority (Low to High)</SelectItem>
+                  <SelectItem value="status-asc">Status (A to Z)</SelectItem>
+                  <SelectItem value="status-desc">Status (Z to A)</SelectItem>
+                  <SelectItem value="updated-desc">Recently Updated</SelectItem>
+                  <SelectItem value="updated-asc">Least Recently Updated</SelectItem>
+                  <SelectItem value="created-desc">Newest First</SelectItem>
+                  <SelectItem value="created-asc">Oldest First</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
             
             <div className="flex items-center gap-2 ml-auto">
